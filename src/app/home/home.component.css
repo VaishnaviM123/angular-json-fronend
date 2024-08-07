@@ -1,0 +1,22 @@
+.search-input {
+    background-color: #f8f9fa !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0.375rem 0.75rem;
+    color: #495057 !important;
+}
+
+.search-input:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.input-group-text {
+    border: none !important;
+    background-color: #f8f9fa !important;
+}
+.l1:hover{
+    color: red;
+}

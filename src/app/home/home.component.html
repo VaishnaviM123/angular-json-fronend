@@ -1,0 +1,62 @@
+<div style="height: 90px;"></div>
+
+<div class="container">
+    <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-3">
+        <div class="input-group mb-2 mb-md-0 me-md-2" style="max-width: 300px;">
+            <span class="input-group-text pe-0"><i class="fa-solid fa-magnifying-glass fs-5"></i></span>
+            <input [(ngModel)]="searchString" type="text" class="form-control search-input" placeholder="Search here...">
+        </div>
+        <button type="button" class="btn btn-secondary mb-2 mb-md-0 me-md-2" (click)="changeSort()">
+            <i class="fa-solid fa-arrow-down-9-1 fs-5"></i>
+        </button>
+        <div class="btn-group mb-2 mb-md-0 me-md-2">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter By
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end w-100">
+                <li><button class="dropdown-item" (click)="changeFilter('')" type="button">All</button></li>
+                <li><button class="dropdown-item" (click)="changeFilter('cash')" type="button">Cash</button></li>
+                <li><button class="dropdown-item" (click)="changeFilter('card')" type="button">Card</button></li>
+                <li><button class="dropdown-item" (click)="changeFilter('Online Payment')" type="button">Online Payment</button></li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-secondary mb-2 mb-md-0 me-md-2" routerLink="/add-expense">
+            Add new Expense
+        </button>
+    </div>
+</div>
+
+<div class="container my-5" style="min-height: 63vh;">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">id</th>
+                    <th scope="col">Expense Date</th>
+                    <th scope="col">Expense Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let i of allExpenses | filter : filterString | search : searchString | sort : sortData | paginate: { itemsPerPage: 10, currentPage: p }, let j=index">
+                    <th scope="row">{{j+1}}</th>
+                    <td>{{i.id}}</td>
+                    <td>{{i.expenseDate}}</td>
+                    <td>{{i.expenseType}}</td>
+                    <td>{{i.description}}</td>
+                    <td>{{i.expenseAmount}}</td>
+                    <td>
+                        <span class="d-flex justify-content-around">
+                            <i class="fa-solid fa-pencil l1" routerLink="/{{i.id}}/edit-expense"></i>
+                            <i class="fa-solid fa-trash-can l1" (click)="deleteOne(i.id)"></i>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls class="text-center" (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>

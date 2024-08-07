@@ -1,0 +1,50 @@
+<div style="height: 40px;"></div>
+<div>
+    <div class="container p-3 mt-5">
+        <a routerLink="/home" style="text-decoration: none; color: black;">
+            <p>
+                <i class="fa-solid fa-angle-left"></i>
+                <i class="fa-solid fa-angle-left"></i> Back to Home
+            </p>
+        </a>
+        <div class="text-center mb-4">
+            <h1>Add Expense</h1>
+        </div>
+        <form [formGroup]="addExpenseForm" (ngSubmit)="onSubmit()">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="expenseType" class="form-label">Expense Type</label>
+                    <select id="expenseType" formControlName="expenseType" class="form-select" aria-label="Expense Type">
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
+                        <option value="Online Payment">Online Payment</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="expenseDate" class="form-label">Expense Date</label>
+                    <input type="date" id="expenseDate" formControlName="expenseDate" class="form-control" [max]="today" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="expenseAmount" class="form-label">Expense Amount</label>
+                    <input type="number" id="expenseAmount" formControlName="expenseAmount" class="form-control" placeholder="Enter Amount (in Rs)" />
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Enter Description"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success mx-2">Add Expense</button>
+                    <a routerLink="/home" class="btn btn-dark mx-2">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

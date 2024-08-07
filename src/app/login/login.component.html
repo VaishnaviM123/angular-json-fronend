@@ -1,0 +1,25 @@
+<div style="height: 96vh;">
+    <div style="height: 100px;"></div>
+    <div class="container w-75 mt-4 shadow">
+        <div class="text-center py-5">
+                <p class="fw-bold fs-2">Login Here!</p>
+                <form [formGroup]="loginFormModel" action="">
+                    <div class="form-floating mt-2 mb-3">
+                        <input type="email" formControlName="email" name="email" class="form-control" id="floatingEmail" placeholder="Enter email">
+                        <label for="floatingEmail">Email Address</label>
+                    </div>
+                    <div *ngIf="loginFormModel.get('email')?.errors&&loginFormModel.get('email')?.touched">
+                        <p class="text-danger">Please enter a valid email</p>
+                    </div>
+                    <div class="form-floating my-2 px-0">
+                        <input type="password" formControlName="psw" name="password" class="form-control" id="floatingPassword" placeholder="Enter password">
+                        <label for="password">Password</label>
+                    </div>
+                    <div *ngIf="loginFormModel.get('psw')?.errors&&loginFormModel.get('psw')?.touched">
+                        <p class="text-danger">Please enter a valid password</p>
+                    </div>
+                </form>
+                <button class="btn btn-outline-primary my-3"  (click)="login()">Login</button>
+        </div>
+    </div>
+</div>

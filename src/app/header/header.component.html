@@ -1,0 +1,19 @@
+<div class="d-flex justify-content-between" style="position: absolute; width: 100vw; font-family: 'Playfair Display SC, serif';">
+    <div class="d-flex mx-3 py-3 flex-row align-items-center" routerLink="/">
+        <img src="https://i.postimg.cc/7L1ZMwcm/logo.png" alt="logo" width="60px" height="60px">
+        <p class="my-auto ms-3 fw-semibold fs-3">Expense Monitor</p>
+    </div>
+    <div *ngIf="isLogin" class="dropdown my-auto me-4">
+        <img [src]="profileImg" alt="profile" class="rounded-circle dropdown-toggle" width="60px" height="60px" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+          <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
+        </ul>
+    </div>
+    <div *ngIf="!isLogin" class="dropdown my-auto me-4">
+        <img [src]="profileImg" alt="profile" class="rounded-circle dropdown-toggle" width="60px" height="60px" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+          <li><a class="dropdown-item" (click)="loginMethod()">login</a></li>
+        </ul>
+    </div>
+</div>

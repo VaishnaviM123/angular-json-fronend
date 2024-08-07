@@ -1,0 +1,53 @@
+<div style="height: 90px;"></div>
+<div class="container mt-4" style="min-height: 79vh;">
+  <div class="d-flex justify-content-between">
+    <a routerLink="/home" style="text-decoration: none; font-weight: 600; color: black;">
+      <p>
+        <i class="fa-solid fa-angle-left"></i>
+        <i class="fa-solid fa-angle-left"></i> Back to Home
+      </p>
+    </a>
+    <a (click)="toggleEdit()" style="text-decoration: none; font-weight: 600; color: black;">
+      <p style="cursor: pointer;">
+        <i class="fa-solid fa-pen me-2"></i>{{ isEditing ? 'Cancel' : 'Edit Profile' }}
+      </p>
+    </a>
+  </div>
+
+  <!-- Show the profile edit form if isEditing is true -->
+  <div class="container">
+      <div *ngIf="isEditing" class="row">
+        <div class="col-md-6 col-sm-12 py-5 text-center">
+          <label for="im">
+            <input (change)="getFile($event)" type="file" id="im" hidden>
+            <img [src]="profileImg" alt="profile" class="rounded-5">
+          </label>
+        </div>
+        <div class="col-md-6 col-sm-12 py-5 my-auto">
+          <div class="form-floating mt-2 mb-3">
+            <input [(ngModel)]="adminData.email" type="email" name="email" class="form-control" id="floatingEmail" placeholder="Enter email">
+            <label for="floatingEmail">Email Address</label>
+          </div>
+          <div class="form-floating my-2 px-0">
+            <input [(ngModel)]="adminData.password" type="password" name="password" class="form-control" id="floatingPassword" placeholder="Enter password">
+            <label for="password">Password</label>
+          </div>
+          <div class="d-flex justify-content-center my-4">
+              <button (click)="update()" class="mx-3 btn1">Update</button>
+              <button (click)="toggleEdit()" class="mx-3 btn2">Cancel</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div>
+    <div class="row my-auto">
+      <div class="col-md-6 col-sm-12 py-5">
+        <div id="container" style="width: 100%; min-height: 300px;"></div>
+      </div>
+      <div class="col-md-6 col-sm-12 py-5">
+        <div id="pieContainer" style="width: 100%; min-height: 300px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
